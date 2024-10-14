@@ -60,7 +60,7 @@ namespace MorseCodeSimulator.Controller
                     {
                         if (String.Equals(c.ToString(), item.Key, StringComparison.OrdinalIgnoreCase))
                         {
-                            code += item.Value + "_";
+                            code += item.Value + "|";
                         }
                     }
                 }
@@ -69,7 +69,7 @@ namespace MorseCodeSimulator.Controller
                     code += " ";
                 }
             }
-            code = code.Substring(0, code.Length - 1); // Remove last char which is "_"
+            code = code.Substring(0, code.Length - 1); // Remove last char which is "|"
         }
 
         static void Decode(ref string code)
@@ -82,7 +82,7 @@ namespace MorseCodeSimulator.Controller
             
             foreach (char c in tempCode)
             {
-                if (String.Equals(c.ToString(), "_"))
+                if (String.Equals(c.ToString(), "|"))
                 {
                     codeList.Add(tempString);
                     tempString = "";
@@ -126,7 +126,7 @@ namespace MorseCodeSimulator.Controller
 
             foreach (char c in code)
             {
-                if ((c.ToString() is ".") || (c.ToString() is "-") || (c.ToString() is "_"))
+                if ((c.ToString() is ".") || (c.ToString() is "-") || (c.ToString() is "|"))
                 {
                     decode++;
                 }
